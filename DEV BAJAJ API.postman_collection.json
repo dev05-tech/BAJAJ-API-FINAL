@@ -185,7 +185,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n  \"firstName\": \"Test\",\r\n  \"lastName\": \"API\",\r\n  \"phoneNumber\": {{uniquePhone}},\r\n  \"emailId\": \"{{uniqueEmail}}\"\r\n}",
+					"raw": "{\r\n  \"firstName\": \"Test\",\r\n  \"lastName\": \"API\",\r\n  \"phoneNumber\": {{uniquePhone2}},\r\n  \"emailId\": \"dup_{{uniqueEmail}}\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
