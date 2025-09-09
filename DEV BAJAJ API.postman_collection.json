@@ -1,0 +1,526 @@
+{
+	"info": {
+		"_postman_id": "18e1c645-8efd-433f-a61f-00920b2d96ca",
+		"name": "DEV BAJAJ API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "48287828",
+		"_collection_link": "https://devsrivastava1005-3516629.postman.co/workspace/Dev-Srivastava's-Workspace~716e36ae-5e8b-4ef9-8623-f45f469403cc/collection/48287828-18e1c645-8efd-433f-a61f-00920b2d96ca?action=share&source=collection_link&creator=48287828"
+	},
+	"item": [
+		{
+			"name": "BAJAJ API",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"const ts = Date.now();\r",
+							"const uniqueEmail = `test_${ts}@example.com`;\r",
+							"const uniquePhone = Number('9' + ts.toString().slice(-9));\r",
+							"\r",
+							"pm.collectionVariables.set('uniqueEmail', uniqueEmail);\r",
+							"pm.collectionVariables.set('uniquePhone', uniquePhone);"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response status code is 200\", function () {\r",
+							"    pm.expect(pm.response.code).to.equal(200);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Response has the required fields\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(responseData).to.be.an('object');\r",
+							"    pm.expect(responseData).to.have.all.keys('userId', 'firstName', 'lastName', 'phoneNumber', 'rollNumber', 'emailId', 'createdAt', 'updatedAt', 'is_success', 'message');\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"EmailId should be in a valid format\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(responseData).to.have.property('emailId');\r",
+							"    pm.expect(responseData.emailId).to.match(/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/, \"EmailId format is invalid\");\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"The phoneNumber must be in a valid format\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(responseData).to.have.property('phoneNumber');\r",
+							"    pm.expect(responseData.phoneNumber).to.match(/^\\+?[1-9]\\d{1,14}$/, \"Phone number is not in a valid format\");\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Response time is less than 500ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "roll-number",
+						"value": "2224081",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"firstName\": \"Test\",\r\n  \"lastName\": \"API\",\r\n  \"phoneNumber\": {{uniquePhone}},\r\n  \"emailId\": \"{{uniqueEmail}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://createtestuser.in/automation-campus/disabled/create/user",
+					"protocol": "https",
+					"host": [
+						"createtestuser",
+						"in"
+					],
+					"path": [
+						"automation-campus",
+						"disabled",
+						"create",
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Missing first name",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"const ts = Date.now();\r",
+							"const uniqueEmail = `test_${ts}@example.com`;\r",
+							"const uniquePhone = Number('9' + ts.toString().slice(-9));\r",
+							"\r",
+							"pm.collectionVariables.set('uniqueEmail', uniqueEmail);\r",
+							"pm.collectionVariables.set('uniquePhone', uniquePhone);"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response status code is 200\", function () {\r",
+							"    pm.expect(pm.response.code).to.equal(200);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Response has the required fields\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(responseData).to.be.an('object');\r",
+							"    pm.expect(responseData).to.have.all.keys('userId', 'firstName', 'lastName', 'phoneNumber', 'rollNumber', 'emailId', 'createdAt', 'updatedAt', 'is_success', 'message');\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"EmailId should be in a valid format\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(responseData).to.have.property('emailId');\r",
+							"    pm.expect(responseData.emailId).to.match(/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/, \"EmailId format is invalid\");\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"The phoneNumber must be in a valid format\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(responseData).to.have.property('phoneNumber');\r",
+							"    pm.expect(responseData.phoneNumber).to.match(/^\\+?[1-9]\\d{1,14}$/, \"Phone number is not in a valid format\");\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Response time is less than 500ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "roll-number",
+						"value": "2224081",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"firstName\": \"Test\",\r\n  \"lastName\": \"API\",\r\n  \"phoneNumber\": {{uniquePhone}},\r\n  \"emailId\": \"{{uniqueEmail}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://createtestuser.in/automation-campus/disabled/create/user",
+					"protocol": "https",
+					"host": [
+						"createtestuser",
+						"in"
+					],
+					"path": [
+						"automation-campus",
+						"disabled",
+						"create",
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Dublicate email id",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"const ts = Date.now();\r",
+							"const uniqueEmail = `test_${ts}@example.com`;\r",
+							"const uniquePhone = Number('9' + ts.toString().slice(-9));\r",
+							"\r",
+							"pm.collectionVariables.set('uniqueEmail', uniqueEmail);\r",
+							"pm.collectionVariables.set('uniquePhone', uniquePhone);"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response status code is 200\", function () {\r",
+							"    pm.expect(pm.response.code).to.equal(200);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Response has the required fields\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(responseData).to.be.an('object');\r",
+							"    pm.expect(responseData).to.have.all.keys('userId', 'firstName', 'lastName', 'phoneNumber', 'rollNumber', 'emailId', 'createdAt', 'updatedAt', 'is_success', 'message');\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"EmailId should be in a valid format\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(responseData).to.have.property('emailId');\r",
+							"    pm.expect(responseData.emailId).to.match(/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/, \"EmailId format is invalid\");\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"The phoneNumber must be in a valid format\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(responseData).to.have.property('phoneNumber');\r",
+							"    pm.expect(responseData.phoneNumber).to.match(/^\\+?[1-9]\\d{1,14}$/, \"Phone number is not in a valid format\");\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Response time is less than 500ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "roll-number",
+						"value": "2224081",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"firstName\": \"Test\",\r\n  \"lastName\": \"API\",\r\n  \"phoneNumber\": {{uniquePhone}},\r\n  \"emailId\": \"{{uniqueEmail}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://createtestuser.in/automation-campus/disabled/create/user",
+					"protocol": "https",
+					"host": [
+						"createtestuser",
+						"in"
+					],
+					"path": [
+						"automation-campus",
+						"disabled",
+						"create",
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Missing Roll Number",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"const ts = Date.now();\r",
+							"const uniqueEmail = `test_${ts}@example.com`;\r",
+							"const uniquePhone = Number('9' + ts.toString().slice(-9));\r",
+							"\r",
+							"pm.collectionVariables.set('uniqueEmail', uniqueEmail);\r",
+							"pm.collectionVariables.set('uniquePhone', uniquePhone);"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response status code is 200\", function () {\r",
+							"    pm.expect(pm.response.code).to.equal(200);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Response has the required fields\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(responseData).to.be.an('object');\r",
+							"    pm.expect(responseData).to.have.all.keys('userId', 'firstName', 'lastName', 'phoneNumber', 'rollNumber', 'emailId', 'createdAt', 'updatedAt', 'is_success', 'message');\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"EmailId should be in a valid format\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(responseData).to.have.property('emailId');\r",
+							"    pm.expect(responseData.emailId).to.match(/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/, \"EmailId format is invalid\");\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"The phoneNumber must be in a valid format\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(responseData).to.have.property('phoneNumber');\r",
+							"    pm.expect(responseData.phoneNumber).to.match(/^\\+?[1-9]\\d{1,14}$/, \"Phone number is not in a valid format\");\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Response time is less than 500ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "roll-number",
+						"value": "MITU22BTEC0060",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"firstName\": \"Test\",\r\n  \"lastName\": \"API\",\r\n  \"phoneNumber\": {{uniquePhone}},\r\n  \"emailId\": \"{{uniqueEmail}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://createtestuser.in/automation-campus/disabled/create/user",
+					"protocol": "https",
+					"host": [
+						"createtestuser",
+						"in"
+					],
+					"path": [
+						"automation-campus",
+						"disabled",
+						"create",
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Duplicate phone number",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"const ts = Date.now();\r",
+							"const uniqueEmail = `test_${ts}@example.com`;\r",
+							"const uniquePhone = Number('9' + ts.toString().slice(-9));\r",
+							"\r",
+							"pm.collectionVariables.set('uniqueEmail', uniqueEmail);\r",
+							"pm.collectionVariables.set('uniquePhone', uniquePhone);"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response status code is 200\", function () {\r",
+							"    pm.expect(pm.response.code).to.equal(200);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Response has the required fields\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(responseData).to.be.an('object');\r",
+							"    pm.expect(responseData).to.have.all.keys('userId', 'firstName', 'lastName', 'phoneNumber', 'rollNumber', 'emailId', 'createdAt', 'updatedAt', 'is_success', 'message');\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"EmailId should be in a valid format\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(responseData).to.have.property('emailId');\r",
+							"    pm.expect(responseData.emailId).to.match(/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/, \"EmailId format is invalid\");\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"The phoneNumber must be in a valid format\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(responseData).to.have.property('phoneNumber');\r",
+							"    pm.expect(responseData.phoneNumber).to.match(/^\\+?[1-9]\\d{1,14}$/, \"Phone number is not in a valid format\");\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Response time is less than 500ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "roll-number",
+						"value": "MITU22BTEC0060",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"firstName\": \"Test\",\r\n  \"lastName\": \"API\",\r\n  \"phoneNumber\": {{uniquePhone}},\r\n  \"emailId\": \"{{uniqueEmail}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://createtestuser.in/automation-campus/disabled/create/user",
+					"protocol": "https",
+					"host": [
+						"createtestuser",
+						"in"
+					],
+					"path": [
+						"automation-campus",
+						"disabled",
+						"create",
+						"user"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "uniqueEmail",
+			"value": ""
+		},
+		{
+			"key": "uniquePhone",
+			"value": ""
+		}
+	]
+}
